@@ -10,28 +10,35 @@ let songs = [];
 
 const previewCache = new Map();
 
+function esc(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 // Look up a 30-second preview via the iTunes Search API (no key needed).
 function fetchPreview(s) {
   if (!previewCache.has(s.song)) {
     const names = s.artist.split(/ feat\. | & /);
     const term = encodeURIComponent(`${s.song} ${s.artist.replace(' feat.', '')}`);
     previewCache.set(s.song, fetch(`https://itunes.apple.com/search?term=${term}&entity=song&limit=10`)
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(data => {
         const norm = str => str.toLowerCase().replace(/[^a-z0-9]/g, '');
         const wanted = names.map(norm);
         const matches = data.results.filter(t => t.previewUrl && wanted.some(n => norm(t.artistName).includes(n)));
         return matches.find(t => !/\blive\b/i.test(`${t.trackName} ${t.collectionName}`)) || matches[0] || null;
       })
-      .catch(() => null));
+      .catch(() => {
+        previewCache.delete(s.song); // don't cache failures; retry on next open
+        return null;
+      }));
   }
   return previewCache.get(s.song);
 }
 
 function popupContent(s) {
-  const death = s.death ? `<br>Died: ${s.death.place} (${s.death.year})` : '';
+  const death = s.death ? `<br>Died: ${esc(s.death.place)} (${esc(s.death.year)})` : '';
   const el = document.createElement('div');
-  el.innerHTML = `<strong>${s.song}</strong><br>${s.artist}<br>Peak: #${s.peak}<br>Born: ${s.birth.place}${death}
+  el.innerHTML = `<strong>${esc(s.song)}</strong><br>${esc(s.artist)}<br>Peak: #${esc(s.peak)}<br>Born: ${esc(s.birth.place)}${death}
     <div class="preview">Loading preview…</div>`;
   return el;
 }
@@ -40,9 +47,9 @@ function loadPreview(s, popupEl) {
   const box = popupEl.querySelector('.preview');
   fetchPreview(s).then(track => {
     if (!track) { box.textContent = 'No preview available'; return; }
-    box.innerHTML = `<img src="${track.artworkUrl100}" alt="" width="60" height="60">
-      <audio controls src="${track.previewUrl}"></audio>
-      <div class="preview-note">${track.trackName} · ${track.artistName}</div>`;
+    box.innerHTML = `<img src="${esc(track.artworkUrl100)}" alt="" width="60" height="60">
+      <audio controls src="${esc(track.previewUrl)}"></audio>
+      <div class="preview-note">${esc(track.trackName)} · ${esc(track.artistName)}</div>`;
   });
 }
 
@@ -63,9 +70,9 @@ function render() {
 
     const li = document.createElement('li');
     li.innerHTML = `<span class="num">${num}</span>
-      <div><div class="song">${s.song}</div>
-      <div class="artist">${s.artist} · ${s.birth.place}</div></div>
-      <span class="peak">#${s.peak}</span>`;
+      <div><div class="song">${esc(s.song)}</div>
+      <div class="artist">${esc(s.artist)} · ${esc(s.birth.place)}</div></div>
+      <span class="peak">#${esc(s.peak)}</span>`;
     li.addEventListener('click', () => {
       map.setView(s.birth.coords, 5);
       marker.openPopup();
