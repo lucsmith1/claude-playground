@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1985 Hits Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>1985 Hits Map</h1>
+    <div class="controls">
+      <span class="legend"><span><i class="dot"></i>alive</span> <span><i class="dot deceased"></i>deceased</span> <span><i class="peak-key">#</i>peak US chart position</span></span>
+      <label><input type="checkbox" id="deceasedOnly"> Deceased only</label>
+    </div>
+  </header>
+  <main>
+    <ul id="list"></ul>
+    <div id="map"></div>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

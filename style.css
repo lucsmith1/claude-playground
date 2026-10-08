@@ -1,0 +1,68 @@
+:root {
+  --ink: #000;
+  --paper: #fff;
+  --grey: #f0f0f0;
+  --pop: #ff4b1f;     /* deceased, peak numbers */
+  --pop2: #ffe500;    /* hover / selection */
+  --radius: 10px;
+  --shadow: 4px 4px 0 var(--ink);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; height: 100vh; display: flex; flex-direction: column;
+  font-family: "Helvetica Neue", Arial, sans-serif; background: var(--paper); color: var(--ink);
+}
+header {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 16px; border-bottom: 3px solid var(--ink); background: var(--paper);
+}
+h1 { margin: 0; font-size: 1.6rem; font-weight: 900; letter-spacing: -.03em; text-transform: uppercase; }
+.controls { display: flex; align-items: center; gap: 16px; font: 700 .8rem ui-monospace, Menlo, monospace; text-transform: uppercase; }
+.controls label { cursor: pointer; border: 2px solid var(--ink); border-radius: var(--radius); padding: 4px 10px; box-shadow: 2px 2px 0 var(--ink); background: var(--paper); }
+.controls label:has(input:checked) { background: var(--pop2); }
+.controls input { accent-color: var(--ink); }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--ink); background: var(--ink); vertical-align: -1px; margin: 0 2px 0 8px; }
+.dot.deceased { background: var(--pop); }
+
+main { flex: 1; display: flex; min-height: 0; }
+#list { list-style: none; margin: 0; padding: 0; width: 360px; overflow-y: auto; border-right: 3px solid var(--ink); }
+#list li { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 2px solid var(--ink); cursor: pointer; }
+#list li:hover { background: var(--pop2); }
+#list .num { font: 900 1.4rem ui-monospace, Menlo, monospace; min-width: 2ch; text-align: right; }
+#list .song { font-weight: 800; line-height: 1.15; }
+#list .artist { font-size: .78rem; color: #333; margin-top: 2px; }
+#list .peak { margin-left: auto; font: 900 .8rem ui-monospace, Menlo, monospace; color: var(--pop); border: 2px solid var(--pop); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+#list li:hover .peak { color: var(--ink); border-color: var(--ink); }
+
+#map { flex: 1; background: var(--grey); }
+.leaflet-tile-pane { filter: grayscale(1) contrast(1.1); }
+.pin {
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--ink); color: var(--paper); border: 2px solid var(--paper);
+  font: 900 .8rem ui-monospace, Menlo, monospace; box-shadow: 2px 2px 0 var(--ink);
+}
+.pin.deceased { background: var(--pop); color: var(--ink); border-color: var(--ink); }
+.pin:hover { background: var(--pop2); color: var(--ink); }
+
+.leaflet-popup-content-wrapper { border: 3px solid var(--ink); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2px; }
+.leaflet-popup-tip { border: 3px solid var(--ink); box-shadow: none; }
+.leaflet-popup-content { margin: 10px 12px; font-size: .85rem; line-height: 1.35; }
+.leaflet-popup-content strong { font-size: 1.05rem; font-weight: 900; }
+.leaflet-container a.leaflet-popup-close-button { color: var(--ink); font-weight: 900; }
+.leaflet-bar a { border-radius: 0 !important; color: var(--ink); font-weight: 900; }
+.leaflet-bar { border: 2px solid var(--ink) !important; border-radius: var(--radius); overflow: hidden; box-shadow: 2px 2px 0 var(--ink); }
+
+.preview { margin-top: 8px; padding-top: 8px; border-top: 2px solid var(--ink); font-size: .8rem; }
+.preview img { display: block; border: 2px solid var(--ink); border-radius: 6px; margin-bottom: 6px; }
+.preview audio { width: 100%; max-width: 220px; filter: grayscale(1) contrast(1.2); }
+.preview-note { color: #444; font-size: .72rem; margin-top: 2px; }
+
+@media (max-width: 700px) {
+  main { flex-direction: column-reverse; }
+  #list { width: 100%; height: 38%; border-right: 0; border-top: 3px solid var(--ink); }
+  h1 { font-size: 1.2rem; }
+}
+.peak-key { font-style: normal; font-weight: 900; color: var(--pop); border: 2px solid var(--pop); border-radius: 999px; padding: 1px 7px; margin: 0 4px 0 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 4px; }
+.legend > span { white-space: nowrap; }
+@media (max-width: 700px) { .controls { gap: 8px; font-size: .7rem; } }

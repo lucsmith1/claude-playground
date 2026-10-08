@@ -1,0 +1,21 @@
+[
+  {"song":"Careless Whisper","artist":"Wham! feat. George Michael","peak":1,"birth":{"place":"East Finchley, London, England","coords":[51.5990,-0.1650]},"death":{"place":"Goring-on-Thames, England","coords":[51.5206,-1.1263],"year":2016}},
+  {"song":"Crazy for You","artist":"Madonna","peak":1,"birth":{"place":"Bay City, Michigan, USA","coords":[43.5945,-83.8889]},"death":null},
+  {"song":"Everybody Wants to Rule the World","artist":"Tears for Fears","peak":1,"birth":{"place":"Portsmouth, England","coords":[50.8198,-1.0880]},"death":null},
+  {"song":"Raspberry Beret","artist":"Prince","peak":2,"birth":{"place":"Minneapolis, Minnesota, USA","coords":[44.9778,-93.2650]},"death":{"place":"Chanhassen, Minnesota, USA","coords":[44.8622,-93.5308],"year":2016}},
+  {"song":"Saving All My Love for You","artist":"Whitney Houston","peak":1,"birth":{"place":"Newark, New Jersey, USA","coords":[40.7357,-74.1724]},"death":{"place":"Beverly Hills, California, USA","coords":[34.0736,-118.4004],"year":2012}},
+  {"song":"I'm on Fire","artist":"Bruce Springsteen","peak":6,"birth":{"place":"Long Branch, New Jersey, USA","coords":[40.3043,-73.9924]},"death":null},
+  {"song":"One More Night","artist":"Phil Collins","peak":1,"birth":{"place":"Chiswick, London, England","coords":[51.4923,-0.2574]},"death":null},
+  {"song":"Take On Me","artist":"a-ha","peak":1,"birth":{"place":"Kongsberg, Norway","coords":[59.6689,9.6502]},"death":null},
+  {"song":"Money for Nothing","artist":"Dire Straits","peak":1,"birth":{"place":"Glasgow, Scotland","coords":[55.8642,-4.2518]},"death":null},
+  {"song":"Part-Time Lover","artist":"Stevie Wonder","peak":1,"birth":{"place":"Saginaw, Michigan, USA","coords":[43.4195,-83.9508]},"death":null},
+  {"song":"Smooth Operator","artist":"Sade","peak":5,"birth":{"place":"Ibadan, Nigeria","coords":[7.3775,3.9470]},"death":null},
+  {"song":"Miami Vice Theme","artist":"Jan Hammer","peak":1,"birth":{"place":"Prague, Czechoslovakia","coords":[50.0755,14.4378]},"death":null},
+  {"song":"Say You, Say Me","artist":"Lionel Richie","peak":1,"birth":{"place":"Tuskegee, Alabama, USA","coords":[32.4304,-85.7075]},"death":null},
+  {"song":"I Want to Know What Love Is","artist":"Foreigner","peak":1,"birth":{"place":"Rochester, New York, USA","coords":[43.1566,-77.6088]},"death":null},
+  {"song":"The Glamorous Life","artist":"Sheila E.","peak":7,"birth":{"place":"Oakland, California, USA","coords":[37.8044,-122.2712]},"death":null},
+  {"song":"St. Elmo's Fire (Man in Motion)","artist":"John Parr","peak":1,"birth":{"place":"Worksop, England","coords":[53.3017,-1.1243]},"death":null},
+  {"song":"Every Time You Go Away","artist":"Paul Young","peak":1,"birth":{"place":"Luton, England","coords":[51.8787,-0.4200]},"death":null},
+  {"song":"We Don't Need Another Hero","artist":"Tina Turner","peak":2,"birth":{"place":"Brownsville, Tennessee, USA","coords":[35.5931,-89.2620]},"death":{"place":"Küsnacht, Switzerland","coords":[47.3177,8.5827],"year":2023}},
+  {"song":"Tonight She Comes","artist":"The Cars","peak":7,"birth":{"place":"Baltimore, Maryland, USA (Ric Ocasek)","coords":[39.2904,-76.6122]},"death":{"place":"New York City, USA (Ric Ocasek)","coords":[40.7128,-74.0060],"year":2019}}
+]
